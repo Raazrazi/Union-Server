@@ -77,7 +77,8 @@ export const uploadFiles = async (req, res) => {
         }
       } else {
         const relativePath = path.relative(path.join(process.cwd(), 'server'), uploadedReport.path).replace(/\\/g, '/');
-        reportUrl = `http://localhost:5000/${relativePath}`;
+        const BASE_URL = process.env.BASE_URL;
+        reportUrl = `${BASE_URL}/${relativePath}`;
         reportPath = uploadedReport.path;
         reportName = uploadedReport.originalname;
         reportSize = uploadedReport.size;
@@ -120,7 +121,8 @@ export const uploadFiles = async (req, res) => {
         }
       } else {
         const relativePath = path.relative(path.join(process.cwd(), 'server'), f.path).replace(/\\/g, '/');
-        fileUrl = `http://localhost:5000/${relativePath}`;
+        const BASE_URL = process.env.BASE_URL;
+        fileUrl = `${BASE_URL}/${relativePath}`;
         storagePath = f.path;
       }
 
